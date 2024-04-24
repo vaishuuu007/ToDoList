@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Array With Loop</title>
+  </head>
+  <style>
+    .body{
+      background-color: #fff;
+    }
+
+    .text-center {
+      text-align: center;
+      align-items: center;
+      color:rgb(238, 48, 127);
+      
+    }
+   .list-container{
+ background-color:pink;
+ margin:5px;
+ height: 300px;
+ display: block;
+ padding: 4px;
+ border-radius: 5px;
+ overflow-y: scroll;
+   }
+   .todo-item{
+background-color:rgb(238, 48, 127);
+border:  1px solid rgb(126, 8, 43);
+padding: 4px 2px;
+border-radius: 20px;
+color: white;
+margin: 5px;
+font-size: larger;
+   }
+   .add-items{
+    padding: 5px;
+    margin: 5px;
+    border-radius: 5px;
+    color: white;
+    background-color:rgb(238, 48, 127);
+   }
+   .action-container{
+    text-align: center;
+    align-items: center;
+   }
+    .input-todo{
+      border-radius: 20px;
+      border:  1px solid rgb(126, 8, 43);
+      background-color:rgb(238, 48, 127);
+      color: white;
+      font-size: 20px;
+
+    }
+  </style>
+  
+    <div>
+    <h1 class="text-center">To Do List:</h1>
+  <div class="list-container" id="list-container">
+  </div>
+</div>
+<div class="action-container ">
+    <input  class="input-todo" type="text" id="input-todo" />
+    <button  class="add-items"  onclick="add()">Add to List</button>
+</div>
+
+    <script>
+   const todolist = [];
+   function add(){
+    const inputElement = document.getElementById("input-todo");
+    todolist.push(inputElement.value);
+    inputElement.value = "";
+    
+    renderTodoList();
+   }
+   function  renderTodoList(){
+  const listContainer = document.getElementById("list-container");
+   listContainer.innerHTML = "";
+
+   for(const todoItem of todolist)
+   {
+    listContainer.innerHTML += `<div class="todo-item"> 
+      <input type=checkbox>
+      ${todoItem}</div>`;
+   }
+   }
+
+
+    </script>
+  </body>
+</html>
