@@ -64,10 +64,18 @@ font-size: larger;
 </div>
 
     <script>
-   const todolist = [];
+   let todolist = [];
+   const listfromlocalStorage = localStorage.getItem("todolist");
+   if(listfromlocalStorage){
+    todolist = JSON.parse(listfromlocalStorage);
+
+     renderTodoList();
+   }
+
    function add(){
     const inputElement = document.getElementById("input-todo");
     todolist.push(inputElement.value);
+    localStorage.setItem("todolist" , JSON.stringify(todolist));
     inputElement.value = "";
     
     renderTodoList();
